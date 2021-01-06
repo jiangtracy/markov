@@ -6,6 +6,7 @@ class MarkovMachine {
 	constructor(text) {
 		let words = text.split(/[ \r\n]+/);
 		this.words = words;
+		this.wordChains = this.makeChains(words);
 	}
 
 	/** set markov chains:
@@ -41,22 +42,23 @@ class MarkovMachine {
 		let i = 0;
 
 		while (i < numWords - 1) {
-			debugger;
-			let wordsArray = wordChains[firstWord];
-			let randomIdx = Math.floor(Math.random() * wordsArray.length);
-      nextWord = wordsArray[randomIdx];
-      
+			// breaks when reaching null
+			nextWord = this.__getRandomWord(firstWord);
 			if(nextWord === null) break;
-
 			text += ` ${nextWord}`;
 			firstWord = nextWord;
 			i++;
 		}
 		return text;
 	}
+	/* takes firstWord and return the next word randomly */
+	__getRandomWord(firstWord){
+		let wordsArray = this.wordChains[firstWord];
+		let randomIdx = Math.floor(Math.random() * wordsArray.length);
+		let nextWord = wordsArray[randomIdx];
+		return nextWord;
+	}
+
 }
 
-let mm = new MarkovMachine('the cat in the hat');
-let text = mm.getText((numWords = 20));
-
-console.log(text);
+module.exports = {MarkovMachine};
