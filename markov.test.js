@@ -9,8 +9,8 @@ describe("makeChains function", function () {
     let mm = new MarkovMachine(text);
     expect(mm.makeChains()).toEqual(chains);
   });
-
-  test("make chains", function () {
+// turn off the word wrap
+  test("make chains 2", function () {
     let text = "the moon is orbiting the earth";
     let chains = {"the": ["moon", "earth"], "moon": ["is"], "is": ["orbiting"], "orbiting": ["the"], "earth": [null]}
     let mm = new MarkovMachine(text);
@@ -52,5 +52,6 @@ describe("getText function", function () {
   });
 
 });
-
+"a b c d"
+// test 
 

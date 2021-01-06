@@ -38,6 +38,7 @@ async function webCat(pathType, path) {
     console.error("Error: invalid path type");
   }
 }
+// controller function that calls cat and webcat 
 
 const pathType = process.argv[2];
 const path = process.argv[3];

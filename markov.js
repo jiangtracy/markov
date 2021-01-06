@@ -1,3 +1,4 @@
+"use strict"
 /** Textual markov chain generator */
 
 class MarkovMachine {
@@ -45,6 +46,7 @@ class MarkovMachine {
 			// breaks when reaching null
 			nextWord = this.__getRandomWord(firstWord);
 			if(nextWord === null) break;
+			// append to array and join, improve run time to O(N) instead of O(N^2) => creating new string
 			text += ` ${nextWord}`;
 			firstWord = nextWord;
 			i++;
